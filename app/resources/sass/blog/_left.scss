@@ -1,0 +1,304 @@
+&.left {
+    flex-shrink: 1;
+    display: flex;
+    flex-flow: column;
+    gap: $_24;
+
+    width: 100%;
+    max-width: $_640;
+
+    @media screen and (min-width: $_800) {
+        width: calc(100% - $_320 - $_24);
+        max-width: unset;
+    }
+
+    >header {
+        padding-top: $_16;
+
+        @media screen and (min-width: $_800) {
+            padding-top: 0;
+        }
+    }
+
+    >h1 {
+        line-height: 2.5rem;
+        font-size: 2rem;
+        color: $text9;
+
+        padding: 0 $_16;
+
+        @media screen and (min-width: $_800) {
+            padding: 0 $_24 0 $_16;
+        }
+    }
+
+    >h2 {
+        margin-top: -$_16;
+        line-height: 2rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: $text7;
+
+        padding: 0 $_16;
+
+        @media screen and (min-width: $_800) {
+            padding: 0 $_24 0 $_16;
+        }
+    }
+
+    >p {
+        margin: -$_16 $_18 0;
+        padding-bottom: 1rem;
+        font-size: $_14;
+        color: $text5;
+        border-bottom: 1px solid $border2;
+
+        @media screen and (min-width: $_800) {
+            margin: -$_16 $_24 0 $_18;
+        }
+
+        >i,
+        >time {
+            color: inherit
+        }
+    }
+
+    >section.body {
+        display: flex;
+        width: 100%;
+        min-height: calc(100vh - $_64);
+
+        &:has(#PDMDViewer) {
+            min-height: unset;
+        }
+    }
+
+    #PDMDViewer {
+        padding: 0 $_16;
+        min-height: calc(100vh - $_64);
+
+        &:has(*) {
+            min-height: unset;
+        }
+    }
+
+    @media screen and (max-width: 799.99px) {
+
+        >header {
+            margin-bottom: 0;
+            max-height: calc(11rem + 4.5rem + $_8);
+            // max-height: 11rem;
+            opacity: 1;
+        }
+    }
+
+    @media screen and (min-width: $_800) {
+        padding: $_24 0 $_80;
+        border-right: 1px solid $border1;
+    }
+
+    >section.article-list {
+        display: flex;
+        flex-flow: column;
+        padding: $_24 $_16 0;
+        transition: 0.3s;
+
+        @media screen and (min-width: $_800) {
+            padding: 0 $_24 0 $_16;
+        }
+
+        >a,
+        >button {
+            display: flex;
+            flex-flow: column;
+            gap: $_4;
+            padding: $_12 $_4 $_12;
+            width: 100%;
+            border-bottom: 1px solid $border1;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: $border1;
+            }
+
+            * {
+                pointer-events: none;
+            }
+
+            >strong {
+                display: flex;
+                align-items: flex-start;
+                gap: $_12;
+                line-height: $_28;
+                text-align: left;
+                font-size: $_20;
+                font-weight: 500;
+
+                >i {
+                    font-size: $_14;
+                    line-height: $_28;
+                }
+            }
+
+            >p {
+                line-height: $_24;
+                text-align: left;
+                font-size: $_14;
+                color: #00000080;
+
+                >i,
+                >time {
+                    color: inherit
+                }
+
+                &:nth-last-child(1) {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    max-height: $_72;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+
+    >details.heading {
+        position: relative;
+        display: flex;
+        flex-flow: column;
+        margin-bottom: -1.5rem;
+        padding: 0 $_16;
+
+        @media screen and (min-width: $_800) {
+            padding: 0 $_24 0 $_16;
+        }
+
+        &[open] {
+
+            >summary::before {
+                content: '▾ ';
+            }
+        }
+
+        >summary {
+            line-height: 1.875rem;
+            color: #000;
+            list-style: none;
+            cursor: pointer;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+
+            &::before {
+                display: inline-block;
+                content: '▸ ';
+                width: 1rem;
+            }
+        }
+
+        >a {
+            display: flex;
+            font-size: 0.875rem;
+            line-height: 1.875rem;
+
+            &:hover {
+                color: blue;
+            }
+        }
+
+        >a::before {
+            content: "•";
+            margin-left: 1.5rem;
+            margin-right: 0.5rem;
+            line-height: 1.875rem;
+            color: #000;
+        }
+
+        >a.layer2::before {
+            content: "◦";
+            margin-left: 3rem;
+            margin-right: 0.5rem;
+            line-height: 1.875rem;
+            color: #000;
+        }
+
+        >a.layer3::before {
+            content: "▪︎";
+            margin-left: 4.5rem;
+            margin-right: 0.5rem;
+            line-height: 1.875rem;
+            color: #000;
+        }
+    }
+
+    >section.page {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: $_16;
+        padding: 0 $_16;
+
+        &.around {
+            justify-content: space-between;
+
+            >a:nth-child(1)::before {
+                left: 0;
+                text-align: left;
+            }
+
+            >a:nth-last-child(1)::before {
+                right: 0;
+                text-align: right;
+            }
+        }
+
+        @media screen and (min-width: $_800) {
+            justify-content: flex-start;
+            padding: 0 $_24 0 $_16;
+        }
+
+        >a {
+            padding: 0 $_8;
+            line-height: $_32;
+            background-color: $border1;
+            transition: 0.3s;
+            overflow: hidden;
+
+            &:hover {
+                background-color: $border2;
+                overflow: visible;
+
+                &::before {
+                    padding: 0 0.75rem;
+                    max-width: calc(100vw - 32px);
+                    opacity: 1;
+                }
+            }
+
+            &::before {
+                content: attr(name);
+                position: absolute;
+                bottom: calc(2rem + 0.5rem);
+                padding: 0;
+                max-width: 0;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                background-color: #000000b3;
+                color: #fff;
+                opacity: 0;
+                transition: 0.3s;
+                overflow: hidden;
+
+                @media screen and (min-width: $_640) {
+                    max-width: 608px;
+                }
+
+                @media screen and (min-width: $_800) {
+                    max-width: 640px;
+                }
+            }
+        }
+    }
+}

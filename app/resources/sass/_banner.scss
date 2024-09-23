@@ -1,0 +1,130 @@
+>section.banner {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    transition: 0.3s;
+
+    &.top>section.banner {
+        padding: 0;
+
+        @media screen and (min-width: $_480) {
+            padding: $_24 $_16 0;
+        }
+    }
+
+    &.bottom {
+        padding: 0 0 $_48;
+
+        @media screen and (min-width: $_480) {
+            padding: 0 0 $_48;
+        }
+    }
+
+    &[data-index="0"]>section.indicator>button:nth-child(1) {
+        width: $_24;
+        background-color: #000;
+    }
+
+    &[data-index="1"]>section.indicator>button:nth-child(2) {
+        width: $_24;
+        background-color: #000;
+    }
+
+    &[data-index="2"]>section.indicator>button:nth-child(3) {
+        width: $_24;
+        background-color: #000;
+    }
+
+    &[data-index="3"]>section.indicator>button:nth-child(4) {
+        width: $_24;
+        background-color: #000;
+    }
+
+    >section {
+        display: flex;
+        gap: $_16;
+        padding: 0 $_16;
+        width: 100%;
+        max-width: $_1024;
+        overflow: scroll hidden;
+        scroll-snap-type: x mandatory;
+        background-color: #ffffff;
+        transition: 0.3s;
+
+        &.banner {
+
+            >a {
+                position: relative;
+                flex-shrink: 0;
+                width: 100%;
+                scroll-snap-align: center;
+                transition: 0.3s;
+                overflow: hidden;
+                background-color: #0000000d;
+
+                padding-top: calc(100% * 320 / 480);
+
+                @media screen and (min-width: $_640) {
+                    padding-top: calc(100% * 250 / 970);
+                }
+
+                &::after {
+                    content: "廣告欄位 480 * 320";
+                    z-index: 0;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    margin-right: -50%;
+
+                    @media screen and (min-width: $_640) {
+                        content: "廣告欄位 970 * 250";
+                    }
+                }
+
+                &:has(img[src]:not([src=""]))::after {
+                    content: "";
+                }
+
+                img {
+                    position: absolute;
+                    display: none;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    width: 100%;
+                    height: 100%;
+
+                    @media screen and (min-width: $_640) {
+                        display: block;
+                    }
+
+                    &.mobile {
+                        display: block;
+
+                        @media screen and (min-width: $_640) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.indicator {
+            justify-content: center;
+            gap: $_8;
+            padding: $_12 0;
+
+            >button {
+                width: $_8;
+                height: $_8;
+                background-color: #00000080;
+                border-radius: $_4;
+                transition: 0.3s;
+            }
+        }
+    }
+}
